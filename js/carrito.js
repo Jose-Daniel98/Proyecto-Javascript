@@ -15,8 +15,9 @@ class Carrito {
 
     //Método para leer los datos del producto
     leerDatosProducto(producto){
+        // Creación del Objeto infoProducto
         const infoProducto = {
-            imagen : producto.querySelector('img').src,
+            imagen: producto.querySelector('img').src,
             titulo: producto.querySelector('h4').textContent,
             precio: producto.querySelector('.precio span').textContent,
             id: producto.querySelector('a').getAttribute('data-id'),
@@ -24,26 +25,22 @@ class Carrito {
         }
 
         let productosLS;
-        productosLS = this.obtenerProductosLocalStorage();
+        productosLS = this.obtenerProductosLS();
         productosLS.forEach(function (productoLS){
             if(productoLS.id === infoProducto.id){
                 productosLS = productoLS.id;
             }
         });
 
+        //If else convertido a Operador Ternario
         //Alerta para repetición de productos
-        if(productosLS === infoProducto.id){
-            Swal.fire({
-                type: 'info',
-                title: '¡Espera un momento!',
-                text: 'El producto ya se encuentra agregado.',
-                showConfirmButton: false,
-                timer: 1000
-            })
-        }
-        else {
-            this.insertarCarrito(infoProducto);
-        }
+        productosLS === infoProducto.id ? Swal.fire({
+                    type: 'info',
+                    title: '¡Espera un momento!',
+                    text: 'El producto ya se encuentra agregado.',
+                    showConfirmButton: false,
+                    timer: 1000
+                }) : this.insertarCarrito(infoProducto);
         
     }
 
@@ -54,27 +51,29 @@ class Carrito {
             <td>
                 <img src="${producto.imagen}" width=100>
             </td>
-            <td>${producto.titulo}</td>
-            <td>${producto.precio}</td>
+            <td>₡${producto.titulo}</td>
+            <td> ₡${producto.precio}</td>
             <td>
                 <a href="#" class="borrar-producto fas fa-times-circle" data-id="${producto.id}"></a>
             </td>
         `;
         listaProductos.appendChild(row);
-        this.guardarProductosLocalStorage(producto);
+        this.guardarProductosLS(producto);
 
     }
 
     //Método para eliminar el producto del carrito en el DOM
     eliminarProducto(e){
         e.preventDefault();
+
         let producto, productoID;
+
         if(e.target.classList.contains('borrar-producto')){
             e.target.parentElement.parentElement.remove();
             producto = e.target.parentElement.parentElement;
             productoID = producto.querySelector('a').getAttribute('data-id');
         }
-        this.eliminarProductoLocalStorage(productoID);
+        this.eliminarProductoLS(productoID);
         this.calcularTotal();
 
     }
@@ -82,19 +81,20 @@ class Carrito {
     //Método para eliminar todos los productos del carrito
     vaciarCarrito(e){
         e.preventDefault();
+        
         while(listaProductos.firstChild){
             listaProductos.removeChild(listaProductos.firstChild);
         }
-        this.vaciarLocalStorage();
+        this.vaciarLS();
 
         return false;
     }
 
     //Método para almacenar y guardar en el LocalStorage
-    guardarProductosLocalStorage(producto){
+    guardarProductosLS(producto){
         let productos;
-        //Toma valor de un arreglo con datos del LS
-        productos = this.obtenerProductosLocalStorage();
+        //Toma valor de un arreglo con datos del LocalStorage
+        productos = this.obtenerProductosLS();
         //Agregar el producto al carrito
         productos.push(producto);
         //Agregamos al LS
@@ -102,7 +102,7 @@ class Carrito {
     }
 
     //Método para obtener y comprobar que hay elementos en el LocalStorage
-    obtenerProductosLocalStorage(){
+    obtenerProductosLS(){
         let productoLS;
 
         //Condición para comprobar si hay productos en LocalStorage
@@ -116,9 +116,9 @@ class Carrito {
     }
 
     //Método para leer y mostrar los productos guardados en el LocalStorage
-    leerLocalStorage(){
+    leerLS(){
         let productosLS;
-        productosLS = this.obtenerProductosLocalStorage();
+        productosLS = this.obtenerProductosLS();
         productosLS.forEach(function (producto){
             //Construir plantilla, para poder mostarla en el HTML y el DOM
             const row = document.createElement('tr');
@@ -137,22 +137,26 @@ class Carrito {
     }
 
     //Método para leer y mostrar los productos guardados en el LocalStorage que se encuentran en el HTML de compra.html
-    leerLocalStorageCompra(){
+    leerLSCompra(){
         let productosLS;
-        productosLS = this.obtenerProductosLocalStorage();
+        productosLS = this.obtenerProductosLS();
         productosLS.forEach(function (producto){
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>
+                <td class= "table-bordered">
                     <img src="${producto.imagen}" width=100>
                 </td>
-                <td>${producto.titulo}</td>
-                <td>${producto.precio}</td>
-                <td>
+                <td class= "table-bordered">
+                ${producto.titulo}
+                </td>
+                <td class= "table-bordered">
+                ${producto.precio}
+                </td>
+                <td class= "table-bordered">
                     <input type="number" class="form-control cantidad" min="1" value=${producto.cantidad}>
                 </td>
-                <td id='subtotales'>${producto.precio * producto.cantidad}</td>
-                <td>
+                <td id='subtotales' class= "table-bordered">${producto.precio * producto.cantidad}</td>
+                <td class= "table-bordered">
                     <a href="#" class="borrar-producto fas fa-times-circle" style="font-size:30px" data-id="${producto.id}"></a>
                 </td>
             `;
@@ -161,12 +165,12 @@ class Carrito {
     }
 
     //Método para eliminar el producto por su ID del LocalStorage
-    eliminarProductoLocalStorage(productoID){
+    eliminarProductoLS(productoID){
         let productosLS;
         //Se obtiene el arreglo de los productos
-        productosLS = this.obtenerProductosLocalStorage();
+        productosLS = this.obtenerProductosLS();
         //Se compara el id del producto borrado con lo que hay en LocalStorage
-        productosLS.forEach(function(productoLS, index){
+        productosLS.forEach(function(productoLS, index) {
             if(productoLS.id === productoID){
                 productosLS.splice(index, 1);
             }
@@ -177,7 +181,7 @@ class Carrito {
     }
 
     //Método para eliminar y vaciar todos los datos del LocalStorage
-    vaciarLocalStorage(){
+    vaciarLS(){
         localStorage.clear();
     }
 
@@ -185,11 +189,11 @@ class Carrito {
     procesarPedido(e){
         e.preventDefault();
 
-        if(this.obtenerProductosLocalStorage().length === 0){
+        if(this.obtenerProductosLS().length === 0){
             //Alerta para carrito vacio y agregar productos
             Swal.fire({
-                type: 'error',
-                title: '¡Lo sentinos!',
+                type: 'info',
+                title: '¡Lo sentimos!',
                 text: 'El carrito está vacío. Por favor agrega algún producto.',
                 showConfirmButton: false,
                 timer: 2000
@@ -203,43 +207,24 @@ class Carrito {
     //Método para calcular los montos de los productos
     calcularTotal(){
         let productosLS;
-        let total = 0, igv = 0, subtotal = 0;
-        productosLS = this.obtenerProductosLocalStorage();
+        let total = 0;
+        let iva = 0; // Hace referencia al impuesto a la venta (13%)
+        let subtotal = 0;
+
+        productosLS = this.obtenerProductosLS();
+
         for(let i = 0; i < productosLS.length; i++){
             let element = Number(productosLS[i].precio * productosLS[i].cantidad);
             total = total + element;
             
         }
         
-        igv = parseFloat(total * 0.18).toFixed(2);
-        subtotal = parseFloat(total-igv).toFixed(2);
+        iva = parseFloat(total * 0.13).toFixed(2);
+        subtotal = parseFloat(total - iva).toFixed(2);
 
         document.getElementById('subtotal').innerHTML = "₡ " + subtotal;
-        document.getElementById('igv').innerHTML = "₡ " + igv;
+        document.getElementById('iva').innerHTML = "₡ " + iva;
         document.getElementById('total').value = "₡ " + total.toFixed(2);
     }
 
-    //Método para obtener los eventos
-    obtenerEvento(e) {
-        e.preventDefault();
-        let id, cantidad, producto, productosLS;
-        if (e.target.classList.contains('cantidad')) {
-            producto = e.target.parentElement.parentElement;
-            id = producto.querySelector('a').getAttribute('data-id');
-            cantidad = producto.querySelector('input').value;
-            let actualizarMontos = document.querySelectorAll('#subtotales');
-            productosLS = this.obtenerProductosLocalStorage();
-            productosLS.forEach(function (productoLS, index) {
-                if (productoLS.id === id) {
-                    productoLS.cantidad = cantidad;                    
-                    actualizarMontos[index].innerHTML = Number(cantidad * productosLS[index].precio);
-                }    
-            });
-            localStorage.setItem('productos', JSON.stringify(productosLS));
-            
-        }
-        else {
-            console.log("click afuera");
-        }
-    }
 }

@@ -10,7 +10,7 @@ cargarEventos();
 
 //Función para cargar los diferentes eventos
 function cargarEventos() {
-    document.addEventListener('DOMContentLoaded', compra.leerLocalStorageCompra());
+    document.addEventListener('DOMContentLoaded', compra.leerLSCompra());
 
     //Función para eliminar los productos del carrito
     carrito.addEventListener('click', (e) => {
@@ -34,77 +34,57 @@ function cargarEventos() {
 }
 
 //Función para procesar la compra de lo seleccionado y que se encuentra en el carrito
-function procesarCompra() {
-    if (compra.obtenerProductosLocalStorage().length === 0) {
+function procesarCompra(e) {
+    e.preventDefault();
+
+    if (compra.obtenerProductosLS().length === 0) {
         Swal.fire({
-            type: 'error',
+            type: 'info',
             title: '¡Lo sentimos!',
             text: 'En este momento no hay productos. Por favor selecciona algún producto',
             showConfirmButton: false,
             timer: 2000
-        }).then(function () {
-            window.location = "index.html";
         })
+        .then(function () {
+            window.location = "index.html";
+        });
     }
     else if (cliente.value === '' || correo.value === '') {
         Swal.fire({
-            type: 'error',
+            type: 'info',
             title: '¡Importante!',
             text: 'Por favor completar todos los campos requeridos',
             showConfirmButton: false,
             timer: 2000
-        })
+        });
     }
     else {
-        
-        //aqui se coloca el user id generado en el emailJS
-        (function () {
-            emailjs.init("user_CEozz2F39lJJOLF5mJiDA");
-        })();
-
-        let myform = $("form#procesar-pago");
-
-        myform.submit( (event) => {
-            event.preventDefault();
-
-            // Se puede cambiar a tu ID de servicio, o mantener el servicio por defecto
-            var service_id = "default_service";
-            var template_id = "template_3SA9LsqQ";
-
-            const cargandoGif = document.querySelector('#cargando');
+        const cargandoGif = document.querySelector('#cargando');
             cargandoGif.style.display = 'block';
 
             const enviado = document.createElement('img');
-            enviado.src = 'img/mail.gif';
+            enviado.src = './img/gmail-sent.gif';
             enviado.style.display = 'block';
             enviado.width = '150';
 
-            emailjs.sendForm(service_id, template_id, myform[0])
-                .then(() => {
-                    cargandoGif.style.display = 'none';
-                    document.querySelector('#loaders').appendChild(enviado);
+            setTimeout(() => {
+                cargandoGif.style.display = 'none';
+                document.querySelector('#loaders').appendChild(enviado);
 
-                    setTimeout(() => {
-                        compra.vaciarLocalStorage();
-                        enviado.remove();
-                        window.location = "index.html";
-                    }, 2000);
-
-
-                }, (err) => {
-                    Swal.fire({
-                        type: 'error',
-                        title: '¡Hubo un error!',
-                        text: 'No se pudo enviar el correo electrrónico',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
+                setTimeout(() => {
+                    enviado.remove();
+                    compra.vaciarLS();
+                    window.location = "./index.html";
+                }, 2000);
+                Swal.fire({
+                    type: 'success',
+                    title: `¡Gracias por tu compra ${cliente.value}!`,
+                    text: 'El paquete con los productos se enviará el día de mañana',
+                    text: 'Plazo máximo de entrega 4 días',
+                    showConfirmButton: false,
+                    timer: 30000
                 });
-
-            return false;
-
-        });
-
+            }, 3000);
     }
 }
 

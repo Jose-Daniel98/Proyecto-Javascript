@@ -14,12 +14,12 @@
     <title>Bienvenidos | Floristería Turrialba</title>
 </head>
 
-<body>
+<body class="body">
 
     <header>
         <div class="container">
             <div class="row align-items-stretch justify-content-between">
-                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
                     <a class="navbar-brand" href="#">FLORISTERIA TURRIALBA</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,17 +35,17 @@
                                     <table id="lista-carrito" class="table">
                                         <thead>
                                             <tr>
-                                                <th>Imagen</th>
-                                                <th>Nombre</th>
-                                                <th>Precio</th>
-                                                <th></th>
+                                                <th class= "bg-success">Imagen</th>
+                                                <th class= "bg-success">Nombre</th>
+                                                <th class= "bg-success">Precio</th>
+                                                <th class= "bg-success"></th>
                                             </tr>
                                         </thead>
                                         <tbody></tbody>
                                     </table>
 
-                                    <a href="#" id="vaciar-carrito" class="btn btn-primary btn-block">Vaciar Carrito</a>
-                                    <a href="#" id="procesar-pedido" class="btn btn-danger btn-block">Procesar
+                                    <a href="#" id="vaciar-carrito" class="btn btn-outline-danger btn-block">Vaciar Carrito</a>
+                                    <a href="#" id="procesar-pedido" class="btn btn-outline-secondary btn-block">Procesar
                                         Compra</a>
                                 </div>
                             </li>
@@ -58,8 +58,8 @@
 
     <main>
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 my-4 mx-auto text-center">
-            <h1 class="display-4 mt-4">Lista de Productos</h1>
-            <p class="lead">Selecciona uno de nuestros productos</p>
+            <h1 class="display-4 mt-4">¡Bienvenidos a nuestra tienda!</h1>
+            <p class="lead">Nuestros productos a su disposición</p>
         </div>
 
         <div class="container" id="lista-productos">
@@ -67,56 +67,56 @@
             <div class="card-deck mb-3 text-center">
                 
                 <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-bold">LIRIOS</h4>
+                    <div class="card-header bg-secondary">
+                        <h4 class="my-0 text-white">LIRIOS</h4>
                     </div>
                     <div class="card-body">
-                        <img src="img/lirio.jfif" class="card-img-top">
+                        <img src="./img/lirio.jfif" class="card-img-top">
                         <h1 class="card-title pricing-card-title precio">₡ <span class="">5000</span></h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
-                            <li>Imagen de carácter ilustrativo</li>
+                            <li class="text-white"><hr></li>
                             <li>Flor natural</li>
-                            <li>Entrega inmediata</li>
+                            <li class="text-white">.</li>
                         </ul>
-                        <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="1">Comprar</a>
+                        <a href="" class="btn btn-block btn-outline-info agregar-carrito" data-id="1">Comprar</a>
                     </div>
                 </div>
 
                 <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-bold">ROSAS</h4>
+                    <div class="card-header bg-secondary">
+                        <h4 class="my-0 text-white">ROSAS</h4>
                     </div>
                     <div class="card-body">
-                        <img src="img/rosa.jfif" class="card-img-top">
+                        <img src="./img/rosa.jfif" class="card-img-top">
                         <h1 class="card-title pricing-card-title precio">₡ <span class="">3000</span></h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
-                            <li>Imagen de carácter ilustrativo</li>
+                            <li class="text-white"><hr></li>
                             <li>Flor natural</li>
-                            <li>Entrega inmediata</li>
+                            <li class="text-white">.</li>
                         </ul>
-                        <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="2">Comprar</a>
+                        <a href="" class="btn btn-block btn-outline-info agregar-carrito" data-id="2">Comprar</a>
                     </div>
                 </div>
 
                 <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-bold">TULIPANES</h4>
+                    <div class="card-header bg-secondary">
+                        <h4 class="my-0 text-white">TULIPANES</h4>
                     </div>
                     <div class="card-body">
-                        <img src="img/tulipan.jfif" class="card-img-top">
+                        <img src="./img/tulipan.jfif" class="card-img-top">
                         <h1 class="card-title pricing-card-title precio">₡ <span class="">4000</span></h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
-                            <li>Imagen de carácter ilustrativo</li>
+                            <li class="text-white"><hr></li>
                             <li>Flor natural</li>
-                            <li>Entrega inmediata</li>
+                            <li class="text-white">.</li>
                         </ul>
-                        <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="3">Comprar</a>
+                        <a href="" class="btn btn-block btn-outline-info agregar-carrito" data-id="3">Comprar</a>
                     </div>
                 </div>
 
@@ -125,56 +125,56 @@
             <div class="card-deck mb-3 text-center">
                 
                 <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-bold">BEGONIAS</h4>
+                    <div class="card-header bg-secondary">
+                        <h4 class="my-0 text-white">BEGONIAS</h4>
                     </div>
                     <div class="card-body">
-                        <img src="img/begonia.jfif" class="card-img-top">
+                        <img src="./img/begonia.jfif" class="card-img-top">
                         <h1 class="card-title pricing-card-title precio">₡ <span class="">5900</span></h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
-                            <li>Imagen de carácter ilustrativo</li>
+                            <li class="text-white"><hr></li>
                             <li>Flor natural</li>
-                            <li>Entrega inmediata</li>
+                            <li class="text-white">.</li>
                         </ul>
-                        <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="4">Comprar</a>
+                        <a href="" class="btn btn-block btn-outline-info agregar-carrito" data-id="4">Comprar</a>
                     </div>
                 </div>
 
                 <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-bold">HORTENSIAS</h4>
+                    <div class="card-header bg-secondary">
+                        <h4 class="my-0 text-white">HORTENSIAS</h4>
                     </div>
                     <div class="card-body">
-                        <img src="img/hortensia.jfif" class="card-img-top">
+                        <img src="./img/hortensia.jfif" class="card-img-top">
                         <h1 class="card-title pricing-card-title precio">₡ <span class="">5769</span></h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
-                            <li>Imagen de carácter ilustrativo</li>
+                            <li class="text-white"><hr></li>
                             <li>Flor natural</li>
-                            <li>Entrega inmediata</li>
+                            <li class="text-white">.</li>
                         </ul>
-                        <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="5">Comprar</a>
+                        <a href="" class="btn btn-block btn-outline-info agregar-carrito" data-id="5">Comprar</a>
                     </div>
                 </div>
 
                 <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-bold">ORQUIDEAS</h4>
+                    <div class="card-header bg-secondary">
+                        <h4 class="my-0 text-white">ORQUIDEAS</h4>
                     </div>
                     <div class="card-body">
-                        <img src="img/orquidea.jfif" class="card-img-top">
+                        <img src="./img/orquidea.jfif" class="card-img-top">
                         <h1 class="card-title pricing-card-title precio">₡ <span class="">2599</span></h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
-                            <li>Imagen de carácter ilustrativo</li>
+                            <li class="text-white"><hr></li>
                             <li>Flor natural</li>
-                            <li>Entrega inmediata</li>
+                            <li class="text-white">.</li>
                         </ul>
-                        <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="6">Comprar</a>
+                        <a href="" class="btn btn-block btn-outline-info agregar-carrito" data-id="6">Comprar</a>
                     </div>
                 </div>
 
@@ -183,44 +183,44 @@
             <div class="card-deck mb-3 text-center">
                 
                 <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-bold">GIRASOLES</h4>
+                    <div class="card-header bg-secondary">
+                        <h4 class="my-0 text-white">GIRASOLES</h4>
                     </div>
                     <div class="card-body">
-                        <img src="img/girasol.jfif" class="card-img-top">
+                        <img src="./img/girasol.jfif" class="card-img-top">
                         <h1 class="card-title pricing-card-title precio">₡ <span class="">4299</span></h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
-                            <li>Imagen de carácter ilustrativo</li>
+                            <li class="text-white"><hr></li>
                             <li>Flor natural</li>
-                            <li>Entrega inmediata</li>
+                            <li class="text-white">.</li>
                         </ul>
-                        <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="7">Comprar</a>
+                        <a href="" class="btn btn-block btn-outline-info agregar-carrito" data-id="7">Comprar</a>
                     </div>
                 </div>
 
                 <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-bold">CLAVELES</h4>
+                    <div class="card-header bg-secondary">
+                        <h4 class="my-0 text-white">CLAVELES</h4>
                     </div>
                     <div class="card-body">
-                        <img src="img/clavel.jfif" class="card-img-top">
+                        <img src="./img/clavel.jfif" class="card-img-top">
                         <h1 class="card-title pricing-card-title precio">₡ <span class="">869</span></h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
-                            <li>Imagen de carácter ilustrativo</li>
+                            <li><hr></li>
                             <li>Flor natural</li>
-                            <li>Entrega inmediata</li>
+                            <li class="text-white">.</li>
                         </ul>
-                        <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="8">Comprar</a>
+                        <a href="" class="btn btn-block btn-outline-info agregar-carrito" data-id="8">Comprar</a>
                     </div>
                 </div>
 
                 <div class="card mb-4 shadow-sm">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-bold">GARDENIAS</h4>
+                    <div class="card-header bg-secondary">
+                        <h4 class="my-0 text-white">GARDENIAS</h4>
                     </div>
                     <div class="card-body">
                         <img src="img/gardenia.jfif" class="card-img-top">
@@ -228,11 +228,11 @@
 
                         <ul class="list-unstyled mt-3 mb-4">
                             <li></li>
-                            <li>Imagen de carácter ilustrativo</li>
+                            <li><hr></li>
                             <li>Flor natural</li>
-                            <li>Entrega inmediata</li>
+                            <li class="text-white">.</li>
                         </ul>
-                        <a href="" class="btn btn-block btn-primary agregar-carrito" data-id="9">Comprar</a>
+                        <a href="" class="btn btn-block btn-outline-info agregar-carrito" data-id="9">Comprar</a>
                     </div>
                 </div>
 
@@ -240,6 +240,28 @@
 
 
         </div>
+
+        <!-- Fetch -->
+        <div class="container my-5 text-center">
+            <button class="w-100 btn btn-outline-warning" id="button" >¡Nuestros clientes opinan!</button> <!--onclick="traer()"-->
+            <div class="mt-5">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="table-info">#</th>
+                            <th scope="col" class="table-info">Nombre</th>
+                            <th scope="col" class="table-info">Comentario</th>
+                            <th scope="col" class="table-info">Calificación</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contenido">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Fetch -->
+
     </main>
 
     <script src="js/jquery-3.4.1.min.js"></script>
@@ -247,6 +269,7 @@
     <script src="js/sweetalert2.min.js"></script>
     <script src="js/carrito.js"></script>
     <script src="js/pedido.js"></script>
+    <script src="./js/opinion_clientes.js"></script>
 
 </body>
 

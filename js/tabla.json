@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nombre": "Harry",
+        "email": "Muy buen servicio, la entrega del producto se hizo a tiempo.",
+        "calificacion": "10"
+    },
+    {
+        "id": 2,
+        "nombre": "Debra",
+        "email": "Lo recomiendo bastante, a seguir mejorando. Se ganaron un cliente.",
+        "calificacion": "9.5"
+    },
+    {
+        "id": 3,
+        "nombre": "Dexter",
+        "email": "Excelente comunicación y trato de parte de los colaboradores. Las flores llegaron sin daños.",
+        "calificacion": "10"
+    },
+    {
+        "id": 4,
+        "nombre": "Rita",
+        "email": "Atención al cliente buena, entrega a tiempo, el producto intacto.",
+        "calificacion": "9.0"
+    }
+]
